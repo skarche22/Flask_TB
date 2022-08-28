@@ -1,0 +1,83 @@
+#INIT
+from flask import Flask#importing Flask class
+print(dir(Flask))
+
+def create_app():#defining first method
+    app=Flask(__name__)#creating instance of flask class#need to check importance of __name__
+
+    from first_flask.users.views import mod as users_module#just to import mod from views.py
+    # from first_flask.product.views import mod as product_module
+
+    app.register_blueprint(users_module)#mod helps to build relation between Blueprint and register
+    #register_blueprint:it is a sub class of Blueprint.it registers the instance created.
+    #
+
+
+
+    # app.register_blueprint(product_module)
+
+    return app
+#views
+from flask import Blueprint,jsonify
+import json
+
+
+mod=Blueprint('xyz',__name__,url_prefix='/arjun')
+""""url prefix is optional, it is added after url.and is prefix to "post request(/sush)" """
+#rout is used for home page browser
+#Blueprint:if is object allows to define application function at the time of object creation#it is collection of routes
+#
+
+@mod.route('/sush',methods=['GET'])
+def fetchall():#business logic of fetchall method
+    return 'List of users.'
+
+# @mod.route('/<user_id>',methods=['GET'])#creating decoretor of show method.rote method passes arguments
+#                                          #arguments have:methods(get,post,put,delete)
+# def show(user_id):#business logic of show method
+#     print(user_id)
+#     response={
+#         "user_id":1,
+#         "user_id": 5,
+#         "user_id": 10
+#     }
+#     return jsonify((response))
+
+@mod.route('/<user_id>',methods=['GET'])
+def gd(user_id):#business logic of fetchall method
+    with open("first_flask/data.json","r") as abc:
+        result=json.load(abc)
+        # print(result)
+        z=[x for x in result if x['user_id']==int(user_id)]
+        for i in z:
+            for k,v in i.items():
+                print(k,v)
+        return jsonify(z)
+
+#GET:to fetch data
+#Post:to send data to server .(sign up)
+#put:update existing data
+#delete:to delete data(user delete)
+
+
+#json file
+[{"user_id": 1,
+  "2":"amol",
+  "3": true},
+
+  {"user_id": 2,
+  "2":"arjun",
+  "3": null}
+]
+
+
+#app.py
+from first_flask import create_app#importing creat app
+
+x = create_app()#storing creat app function call into variable
+
+if __name__=='__main__':#to check if program is executed as individual program
+    x.run(debug=True)#debug: for browser refresh
+    """run is method pf flask.
+       it bulids relation on development local server"""
+

@@ -1,0 +1,30 @@
+1.create folder name -->my--open in pycharm
+
+2.create p1 package
+ Goto Pycharm Terminal select command prompt.
+
+if virtual environment not install then install first
+	pip install virtualenv
+
+3. create virtual environment.
+	D:\0_2Python program\my>virtualenv --python=python3 .myenv
+	(optional) virtualenv myenv
+				"." is not essential 
+				(".") dot is normally used to identify the virtual environment
+4.Activate the .myenv
+	D:\0_2Python program\my>.myenv\Scripts\activate.bat
+	
+	Other way to activate the VEnv by changing the setting from 
+		File->setting->project project_interpretor 
+		
+5.Check packages
+	D:\0_2Python program\my>pip list
+
+6.To deactivate
+	D:\0_2Python program\my>deactivate
+	
+
+Need to install Flask for Flask project
+	pip install Flask
+	
+	

@@ -1,0 +1,12 @@
+client--------request with the help of API(GET,POST,PUT,DELETE)(business logic)(views)-------models.py(ORM)(Mysql database table)--------views.py-----template.py(sever response)
+
+client(request through API(URL)------server
+server(response)------client
+browser
+
+client----request.py(views.py)business logic
+
+employee record from emp table
+
+
+request(method=GET)
