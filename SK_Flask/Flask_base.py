@@ -1,9 +1,9 @@
 from flask import Flask
 
-Pune=Flask(__name__)
+Pune=Flask(__name__)           #flask app and variable pune
 
 
-@Pune.route('/')
+@Pune.route('/')                 
 def welcome():
     return 'welcome to pune'
 
